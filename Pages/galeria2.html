@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/imgs/icona.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Andrea Naharro</title>
+        <link href="/main.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    </head>
+    <body class="h-screen *:font-NotoSans content">
+        <div class="flex w-full max-h-screen flex-row-reverse" id="bodyContainer">
+            <div class="slider w-full overflow-hidden relative">
+                <div id="sliderTrack" class="slider-track">
+                    <div class="slide">
+                        <img src="/imgs/SCENE10-FINAL.png" alt="Image 1" class="">
+                    </div>
+                    <div class="slide">
+                        <img src="/imgs/SCENE11-FINAL.png" alt="Image 2" class="">
+                    </div>
+                    <div class="slide">
+                        <img src="/imgs/SCENE12-FINAL.png" alt="Image 3" class="">
+                    </div>
+                    <div class="slide">
+                        <img src="/imgs/SCENE13-FINAL.png" alt="Image 4" class="">
+                    </div>
+                </div>
+                <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 p-2 bg-gray-700 text-white">Prev</button>
+                <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 p-2 bg-gray-700 text-white">Next</button>
+            </div>
+        </div>
+    
+        <script>
+            $(document).ready(function () {
+                const $sliderTrack = $('#sliderTrack');
+                const $slides = $('.slide');
+                const $prevButton = $('#prev');
+                const $nextButton = $('#next');
+                let currentIndex = 0;
+    
+                function updateSliderPosition() {
+                    const slideWidth = $slides.first().width();
+                    $sliderTrack.css('transform', `translateX(-${currentIndex * slideWidth}px)`);
+                }
+    
+                $prevButton.on('click', function () {
+                    currentIndex = (currentIndex === 0) ? $slides.length - 1 : currentIndex - 1;
+                    updateSliderPosition();
+                });
+    
+                $nextButton.on('click', function () {
+                    currentIndex = (currentIndex === $slides.length - 1) ? 0 : currentIndex + 1;
+                    updateSliderPosition();
+                });
+    
+                $(window).on('resize', updateSliderPosition);
+            });
+        </script>
+        <script src="/Scripts/inserter.js"></script>
+    </body>
+</html>
