@@ -10,7 +10,7 @@ module.exports = defineConfig({
         colab: './Pages/colab.html',
         eventos: './Pages/eventos.html',
         proximasFechas: './Pages/proximasFechas.html',
-        
+        inserter: './Scripts/inserter.js',
         // ...
         // List all files you want in your build
       }
